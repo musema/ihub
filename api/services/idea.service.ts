@@ -2,7 +2,7 @@ import IdeaRepository from '../repositories/idea.repository';
 import { IIdea } from '../models/idea';
 
 class IdeaService {
-    async create(idea: IIdea) {
+    async create(idea: any) {
         return await IdeaRepository.add(idea);
     }
 

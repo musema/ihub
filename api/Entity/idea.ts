@@ -1,8 +1,11 @@
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import { IIdea } from '../models/idea';
 
 const ideaSchema = new mongoose.Schema(
     {
+        _id: {
+            type: String,
+        },
         title: {
             type: String,
             // required: true
@@ -14,8 +17,9 @@ const ideaSchema = new mongoose.Schema(
     },
     {
         timestamps: true,
-    }
+        id: false,
+    },
 );
 
-export const Idea = mongoose.model<IIdea>('Idea', ideaSchema);
+export const Idea = mongoose.model('Idea', ideaSchema);
 

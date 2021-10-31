@@ -1,4 +1,3 @@
-// connect with mongodb
 import mongoose from 'mongoose';
 
 class MongoDBClient {
@@ -6,24 +5,18 @@ class MongoDBClient {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         serverSelectionTimeoutMS: 5000,
-        useFindAndModify: false,
     };
 
     constructor() {
-        this.connectWithRetry();
-    }
-
-    private connectWithRetry = () => {
         mongoose
-            .connect('mongodb://localhost:27017/ideadb', this.mongooseOptions)
-            .then(() => {
-                console.log('MongoDB is connected');
-            })
-            .catch((err) => {
-                setTimeout(this.connectWithRetry, 2000);
-                console.log('Unable to connect MongoDB');
-            });
-    };
+        .connect('mongodb://localhost:27017/ideadb', this.mongooseOptions)
+        .then(() => {
+            console.log('MongoDB is successfully connected to ideadb');
+        })
+        .catch((err) => {
+            console.log('Unable to connect MongoDB');
+        });
+    }
 
     public getClient() {
         return mongoose;
