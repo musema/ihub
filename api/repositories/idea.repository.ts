@@ -1,6 +1,6 @@
 import shortid from 'shortid';
 import { IIdea } from '../models/idea';
-import { Idea } from '../Entity/idea';
+import { Idea } from '../entites/idea';
 
 class IdeaRepository {
     constructor() { }

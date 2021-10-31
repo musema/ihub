@@ -22,6 +22,6 @@ const ideaSchema = new mongoose.Schema(
     },
 );
 
-export const Idea = mongoClient.getClient().model('Idea', ideaSchema);
+export const Idea = mongoClient.getClient().model<IIdea>('Idea', ideaSchema);
 
 
