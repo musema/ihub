@@ -1,38 +1,13 @@
-import * as mongoose from 'mongoose';
-import mongoClient from '../clients/mongodb';
 import shortid from 'shortid';
 import { IIdea } from '../models/idea';
-
+import { Idea } from '../Entity/idea';
 
 class IdeaRepository {
-// TODO move this to Entity
-private ideaSchema = new mongoose.Schema(
-    {
-        _id: {
-            type: String,
-        },
-        title: {
-            type: String,
-            required: true
-        },
-        description: {
-            type: String,
-            // required: true
-        }
-    },
-    {
-        timestamps: true,
-        id: false,
-    },
-);
-
-private Idea = mongoClient.getClient().model('Idea', this.ideaSchema);
-
-    constructor() {  }
+    constructor() { }
 
     async add(newIdea: IIdea) {
         const id = shortid.generate();
-        const idea = new this.Idea({
+        const idea = new Idea({
             _id: id,
             ...newIdea,
         });
@@ -41,15 +16,15 @@ private Idea = mongoClient.getClient().model('Idea', this.ideaSchema);
     }
 
     async getById(id: string) {
-        return this.Idea.findOne({ _id: id }).populate('Idea').exec();
+        return Idea.findOne({ _id: id }).populate('Idea').exec();
     }
 
     async deleteById(id: string) {
-        return this.Idea.deleteOne({ _id: id }).exec();
+        return Idea.deleteOne({ _id: id }).exec();
     }
 
     async get(limit = 10, page = 0) {
-        return this.Idea.find()
+        return Idea.find()
             .limit(limit)
             .skip(limit * page)
             .exec();

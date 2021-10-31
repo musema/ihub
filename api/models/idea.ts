@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
-export interface IIdea extends mongoose.Document {
-    tite: string;
+export interface IIdea {
+    title: string;
     description: string;
 }
 

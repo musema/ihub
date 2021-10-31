@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import { IIdea } from '../models/idea';
+import mongoClient from '../clients/mongodb';
 
 const ideaSchema = new mongoose.Schema(
     {
@@ -8,7 +9,7 @@ const ideaSchema = new mongoose.Schema(
         },
         title: {
             type: String,
-            // required: true
+            required: true
         },
         description: {
             type: String,
@@ -21,5 +22,6 @@ const ideaSchema = new mongoose.Schema(
     },
 );
 
-export const Idea = mongoose.model('Idea', ideaSchema);
+export const Idea = mongoClient.getClient().model('Idea', ideaSchema);
+
 
