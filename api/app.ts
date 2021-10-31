@@ -4,7 +4,7 @@ import * as expressWinston from 'express-winston';
 import cors from 'cors';
 
 import { loggerOptions } from './utils/logger';
-import { IdeasRoutes } from './routes/ideas';
+import { IdeasRoutes } from './routes/idea';
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);

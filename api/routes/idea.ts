@@ -1,6 +1,6 @@
 import { Application } from "express";
 import { IRouteHandler } from "./types";
-import { IdeaController} from '../controllers/ideas';
+import { IdeaController} from '../controllers/idea';
 
 export class IdeasRoutes implements IRouteHandler {
     private ideaController = new IdeaController();
