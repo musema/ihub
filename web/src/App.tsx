@@ -1,14 +1,23 @@
 import React from 'react';
-import './App.css';
+import { Container } from '@material-ui/core';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-function App() {
+import { IdeaDetails } from './components/Ideas';
+import { NavBar } from './components/Nav/NavBar';
+import { Home } from './components/Home';
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>iHub Web</h1>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Container maxWidth="xl">
+        <NavBar />
+        <Switch>
+          <Route path="/" exact component={() => <Redirect to="/ideas" />} />
+          <Route path="/ideas" exact component={Home} />
+          <Route path="/ideas/search" exact component={Home} />
+          <Route path="/ideas/:id" exact component={IdeaDetails} />
+        </Switch>
+      </Container>
+    </BrowserRouter>
   );
-}
-
-export default App;
+};
