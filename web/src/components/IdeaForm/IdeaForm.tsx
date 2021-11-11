@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import FileBase from 'react-file-base64';
+// import FileBase from 'react-file-base64';
 
 import { useStyles } from './IdeaForm.styles';
 
@@ -20,7 +20,7 @@ export const IdeaForm = () => {
     setTags([]);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     // dispatch(createIdea());
   };
@@ -32,11 +32,11 @@ export const IdeaForm = () => {
         <TextField name="title" variant="outlined" label="Title" fullWidth value={title} onChange={(e) => setTitle(e.target.value)} />
         <TextField name="message" variant="outlined" label="Description" fullWidth multiline rows={4} value={description} onChange={(e) => setDescription(e.target.value)} />
         <div className={classes.fileInput}>
-          <FileBase
+          {/* <FileBase
             type="file"
             multiple={false}
             onDone={({ base64 }) => setImages((images) => [...images, base64])}
-            />
+            /> */}
         </div>
         <Button
             className={classes.submitButton}
