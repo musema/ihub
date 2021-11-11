@@ -15,8 +15,8 @@ export class IdeaController implements IIdeaController {
 
     public addIdea = async (req: express.Request, res: express.Response) => {
         const result = await ideaService.create({
-            title: 'new and fresh idea',
-            description: 'just another fresh idea'
+            title: 'Simple life',
+            description: 'I believe in simplicity, remember things are as simple as how you think simple they are.'
         });
         res.status(200).send(result);
     };
