@@ -5,17 +5,19 @@ import Toolbar from '@mui/material/Toolbar';
 import { NavBarLeft } from './NavBarLeft/NavBarLeft';
 import { NavBarRight } from './NavBarRight/NavBarRight';
 import { useStyles } from './NavBar.styles';
+import { Paper } from '@material-ui/core';
 
 export const NavBar = () => {
   const classes = useStyles();
   return (
-      <AppBar className={classes.appBar} position="static">
+    // <AppBar className={classes.appBar}  position="static">
+      <Paper className={classes.appBar}>
         <Toolbar>
-            <Box sx={{ flexGrow: 1 }} />
             <NavBarLeft />
             <Box sx={{ flexGrow: 1 }} />
             <NavBarRight />
         </Toolbar>
-      </AppBar>
+        </Paper>
+      // </AppBar>
   );
 }
