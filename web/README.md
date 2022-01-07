@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Start the API [../api/README.md](../api/README.md) first
 
 ## Available Scripts
 
