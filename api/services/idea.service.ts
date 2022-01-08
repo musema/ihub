@@ -1,21 +1,31 @@
+import express from 'express';
 import IdeaRepository from '../repositories/idea.repository';
 import { IIdea } from '../models/idea';
 
 class IdeaService {
-    async create(idea: IIdea) {
+
+    async get(page: number=0, limit: number = 10) {
+        return await IdeaRepository.get(page, limit);
+    }
+
+    async getById(id: string) {
+        return await IdeaRepository.getById(id);
+    }
+
+    async add(idea: IIdea) {
         return await IdeaRepository.add(idea);
+    }
+
+    async update(ideaId: string, updatedIdea: IIdea) {
+        return await IdeaRepository.update(ideaId, updatedIdea);
     }
 
     async deleteById(id: string) {
         return await IdeaRepository.deleteById(id);
     }
 
-    async get(limit: number = 10, page: number=0) {
-        return await IdeaRepository.get(limit, page);
-    }
-
-    async getById(id: string) {
-        return await IdeaRepository.getById(id);
+    async search(query: any) {
+        return await IdeaRepository.search(query);
     }
 
 }

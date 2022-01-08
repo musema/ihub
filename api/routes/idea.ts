@@ -12,7 +12,13 @@ export class IdeasRoutes implements IRouteHandler {
         .post(this.ideaController.addIdea);
 
         app.route('/ideas/:ideaId')
-        .get(this.ideaController.getIdeaById);
+            .put(this.ideaController.updateIdea)
+            .delete(this.ideaController.deleteIdea)
+            .get(this.ideaController.getIdeaById);
+
+        app.route('/ideas/search')
+            .get(this.ideaController.searchIdea);
+
         return app;
     }
     

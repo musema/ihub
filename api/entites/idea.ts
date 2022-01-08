@@ -22,6 +22,7 @@ const ideaSchema = new mongoose.Schema(
     },
 );
 
+ideaSchema.index({title: 'text', description: 'text'});
 export const Idea = mongoClient.getClient().model<IIdea>('Idea', ideaSchema);
 
 

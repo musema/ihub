@@ -5,6 +5,15 @@ import { Idea } from '../entites/idea';
 class IdeaRepository {
     constructor() { }
 
+    async get(page = 0, limit = 10) {
+        return Idea.find()
+            .limit(limit)
+            .skip(limit * page)
+            .exec();
+    }
+    async getById(id: string) {
+        return Idea.findOne({ _id: id }).populate('Idea').exec();
+    }
     async add(newIdea: IIdea) {
         const id = shortid.generate();
         const idea = new Idea({
@@ -12,23 +21,21 @@ class IdeaRepository {
             ...newIdea,
         });
         await idea.save();
-        return id;
+        return idea;
     }
-
-    async getById(id: string) {
-        return Idea.findOne({ _id: id }).populate('Idea').exec();
+    async update(id: string, updatedIdea: IIdea) {
+        const result = await Idea.findByIdAndUpdate(id, updatedIdea);
+        return result;
     }
 
     async deleteById(id: string) {
         return Idea.deleteOne({ _id: id }).exec();
     }
-
-    async get(limit = 10, page = 0) {
-        return Idea.find()
-            .limit(limit)
-            .skip(limit * page)
-            .exec();
+    async search(query: any) {
+        // const q = Idea.find({ $text : { $search : query } });
+        return {result: "Not Implemented" };
     }
+
 }
 
 export default new IdeaRepository();

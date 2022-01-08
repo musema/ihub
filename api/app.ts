@@ -16,9 +16,6 @@ app.use(expressWinston.logger(loggerOptions));
 
 new IdeasRoutes().addRoutes(app);
 
-app.get('/', (req: express.Request, res: express.Response) => {
-    res.status(200).send('hi from server')
-});
 
 server.listen(port, () => {
     console.log(`Server is up and running at ${port}`);

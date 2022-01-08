@@ -14,6 +14,8 @@ Assuming MongoDB server is running on `PORT` 5000, and database named `ideadb` i
 
 ### Setup instruction
 	--- COMING SOON ---
+1. install `nodemon` globally
+    `npm install -g nodemon `
 ### Scripts
 1. Starting the server/API
 	1. MongoDB is up and running on PORT `5000`
