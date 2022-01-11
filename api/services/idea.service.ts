@@ -16,8 +16,8 @@ class IdeaService {
         return await IdeaRepository.add(idea);
     }
 
-    async update(ideaId: string, updatedIdea: IIdea) {
-        return await IdeaRepository.update(ideaId, updatedIdea);
+    async update(id: string, updatedIdea: IIdea) {
+        return await IdeaRepository.update(id, updatedIdea);
     }
 
     async deleteById(id: string) {

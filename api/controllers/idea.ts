@@ -11,7 +11,7 @@ interface IIdeaController {
     searchIdea: (req: express.Request, res: express.Response, next: express.NextFunction) => void;
 }
 
-export class IdeaController implements IIdeaController {
+class IdeaController implements IIdeaController {
 
     public getIdeas = async (req: express.Request, res: express.Response) => {
         const page = req.query.page ? parseInt(req.query.page.toString()) : undefined;
@@ -22,7 +22,7 @@ export class IdeaController implements IIdeaController {
     };
 
     public getIdeaById = async (req: express.Request, res: express.Response) => {
-        const result = await ideaService.getById(req.params.ideaId);
+        const result = await ideaService.getById(req.params.id);
         res.status(200).send(result);
     };
 
@@ -37,15 +37,15 @@ export class IdeaController implements IIdeaController {
     };
 
     public updateIdea = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        const ideaId = req.params.ideaId;
+        const id = req.params.id;
         const updatedIdea = req.body;
-        const result = await ideaService.update(ideaId, updatedIdea);
+        const result = await ideaService.update(id, updatedIdea);
         res.status(200).send(result);
     };
 
     public deleteIdea = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        const ideaId = req.params.ideaId;
-        const result = await ideaService.deleteById(ideaId);
+        const id = req.params.id;
+        const result = await ideaService.deleteById(id);
         res.status(200).send(result);
     };
 
@@ -55,3 +55,5 @@ export class IdeaController implements IIdeaController {
         res.status(200).send(result);
     };
 }
+
+export default new IdeaController();

@@ -38,8 +38,8 @@ export const fetchIdeasByPage = async (page: number) => API.get(`/ideas?page=${p
 export const fetchIdeasByUser = async (userId: string) => API.get(`/ideas/user?userId=${userId}`);
 export const searchIdeas = async (query: string) => API.get(`/ideas/search?query=${query}`);
 export const createIdea = async (newIdea: IIdea) => API.post('/ideas', newIdea);
-export const likeIdea = async (userId: string, ideaId: string) => API.patch(`/ideas/${ideaId}/likes`);
-export const commentOnIdea = async (comment: IComment, ideaId: string) => API.post(`/idea/${ideaId}/comments`, { comment });
+export const likeIdea = async (userId: string, id: string) => API.patch(`/ideas/${id}/likes`);
+export const commentOnIdea = async (comment: IComment, id: string) => API.post(`/idea/${id}/comments`, { comment });
 export const updateIdea = async (updatedIdea: IIdea) => API.patch(`/ideas`, updatedIdea);
-export const deleteIdea = async (ideaId: string) => API.delete(`/ideas/${ideaId}`);
+export const deleteIdea = async (id: string) => API.delete(`/ideas/${id}`);
 

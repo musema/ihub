@@ -12,7 +12,7 @@ class IdeaRepository {
             .exec();
     }
     async getById(id: string) {
-        return Idea.findOne({ _id: id }).populate('Idea').exec();
+        return Idea.findOne({ _id: id }).exec();
     }
     async add(newIdea: IIdea) {
         const id = shortid.generate();
