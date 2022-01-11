@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 // import FileBase from 'react-file-base64';
 
 import { useStyles } from './IdeaForm.styles';
+import { createIdeas } from '../../store/ideas/actions/ideas.actions';
 
 export const IdeaForm = () => {
   const classes = useStyles();
@@ -22,7 +23,10 @@ export const IdeaForm = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // dispatch(createIdea());
+    dispatch(createIdeas({
+      title,
+      description
+    }))
   };
 
   return (

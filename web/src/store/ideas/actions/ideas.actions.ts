@@ -1,6 +1,8 @@
 import { 
   GetIdeasActionType,
-  GetIdeasAction
+  GetIdeasAction,
+  CreateIdeaAction,
+  CreateIdeaActionType
 } from './ideas.actions.types';
 import * as api from '../../../api';
 import { Dispatch } from 'react';
@@ -18,4 +20,17 @@ export const getIdeas = () => async (dispatch: Dispatch<GetIdeasAction>) => {
         .catch((e) => {
           dispatch({ type: GetIdeasActionType.GET_IDEAS_FAILURE, payload: e.message});
         });
+};
+
+export const createIdeas = (newIdea: Partial<IIdea>) => async (dispatch: Dispatch<CreateIdeaAction>) => {
+  dispatch({
+    type: CreateIdeaActionType.CREATE_IDEA_REQUEST
+  });
+  api.createIdea(newIdea)
+      .then((response) => {
+        dispatch({ type: CreateIdeaActionType.CREATE_IDEA_SUCCESS, payload: { idea: response.data } });
+      })
+      .catch((e) => {
+        dispatch({ type: CreateIdeaActionType.CREATE_IDEA_FAILURE, payload: {error: e.message}});
+      });
 };
