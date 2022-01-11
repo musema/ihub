@@ -21,8 +21,7 @@ const ideaRouter = express.Router();
  *           description: Description of your idea
  *       example:
  *         title: Documenting your Node.js and Express API
- *         description: You can document your API with swagger-jsdocs, swagger-ui-express 
- *
+ *         description: You can document your API with swagger-jsdocs, swagger-ui-express
  */
 
 /**

@@ -2,10 +2,13 @@ import shortid from 'shortid';
 import { IIdea } from '../models/idea';
 import { Idea } from '../entites/idea';
 
+/*
+* @TODO: Idea repository tightly coupled with mongoose schema, this need to be avoided
+*/
 class IdeaRepository {
     constructor() { }
 
-    async get(page = 0, limit = 10) {
+    async get(page: number, limit: number) {
         return Idea.find()
             .limit(limit)
             .skip(limit * page)
