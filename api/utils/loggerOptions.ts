@@ -10,3 +10,5 @@ export const loggerOptions: expressWinston.LoggerOptions = {
         winston.format.colorize({ all: true })
     ),
 };
+
+export default loggerOptions;
