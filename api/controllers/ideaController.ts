@@ -1,6 +1,6 @@
 import express from 'express';
 import { IIdea } from '../models/idea';
-import ideaService from '../services/ideaService';
+import IdeaService from '../services/ideaService';
 
 interface IIdeaController {
     getIdeas: (req: express.Request, res: express.Response, next: express.NextFunction) => void;
@@ -17,12 +17,12 @@ class IdeaController implements IIdeaController {
         const page = req.query.page ? parseInt(req.query.page.toString()) : undefined;
         const limit = req.query.limit ? parseInt(req.query.limit.toString()) : undefined;
 
-        const ideas = await ideaService.get({page, limit});
+        const ideas = await IdeaService.get({page, limit});
         res.status(200).send(ideas);
     };
 
     public getIdeaById = async (req: express.Request, res: express.Response) => {
-        const result = await ideaService.getById(req.params.id);
+        const result = await IdeaService.getById(req.params.id);
         res.status(200).send(result);
     };
 
@@ -32,26 +32,26 @@ class IdeaController implements IIdeaController {
             title,
             description
         }
-        const result = await ideaService.create(newIdea);
+        const result = await IdeaService.create(newIdea);
         res.status(200).send(result);
     };
 
     public updateIdea = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         const id = req.params.id;
         const updatedIdea = req.body;
-        const result = await ideaService.update(id, updatedIdea);
+        const result = await IdeaService.update(id, updatedIdea);
         res.status(200).send(result);
     };
 
     public deleteIdea = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         const id = req.params.id;
-        const result = await ideaService.delete(id);
+        const result = await IdeaService.delete(id);
         res.status(200).send(result);
     };
 
     public searchIdea = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         const { searchTerm } = req.query;
-        const result = await ideaService.search({searchTerm: searchTerm as string});
+        const result = await IdeaService.search({searchTerm: searchTerm as string});
         res.status(200).send(result);
     };
 }

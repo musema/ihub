@@ -1,8 +1,6 @@
+import { IIdeaService, IGetOptions, ISearchQuery } from '../interfaces';
 import IdeaRepository from '../repositories/ideaRepository';
 import { IIdea } from '../models/idea';
-import { IIdeaService } from '../interfaces/ideaService';
-import { IGetOptions } from '../interfaces/getOptions';
-import { ISearchQuery } from '../interfaces/searchQuery';
 
 class IdeaService implements IIdeaService {
 
