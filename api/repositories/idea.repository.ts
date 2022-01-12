@@ -34,11 +34,10 @@ class IdeaRepository {
     async deleteById(id: string) {
         return Idea.deleteOne({ _id: id }).exec();
     }
-    async search(query: any) {
-        // const q = Idea.find({ $text : { $search : query } });
-        return {result: "Not Implemented" };
-    }
 
+    async search(query: any) {
+
+    }
 }
 
 export default new IdeaRepository();

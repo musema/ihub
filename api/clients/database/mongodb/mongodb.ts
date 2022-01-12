@@ -8,10 +8,14 @@ class MongoDBClient {
     };
 
     constructor() {
+        const connectionString = process.env.MONGODB_CONNECTION_STRING;
+        if(!connectionString) {
+            throw new Error("connection string was not found");
+        }
         mongoose
-        .connect('mongodb://localhost:27017/ideadb', this.mongooseOptions)
+        .connect(connectionString, this.mongooseOptions)
         .then(() => {
-            console.log('MongoDB is successfully connected to ideadb');
+            console.log('MongoDB is successfully connected');
         })
         .catch((err) => {
             console.log('Unable to connect MongoDB');

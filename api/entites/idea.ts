@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import { IIdea } from '../models/idea';
-import mongoClient from '../clients/mongodb';
+import mongoClient from '../clients/database/mongodb/mongodb';
 
 const ideaSchema = new mongoose.Schema(
     {
