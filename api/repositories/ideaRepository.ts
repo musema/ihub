@@ -4,7 +4,7 @@ import { AbstractRepository } from './abstractRepository';
 
 export class IdeaRepository extends AbstractRepository<IIdea> {
     constructor(){
-        super(new MongoDBClient())
+        super(new MongoDBClient()); // @TODO: this tight coupling needs to be fixed
     }
 }
 

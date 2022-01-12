@@ -1,4 +1,4 @@
-export interface IDatabaseClient<T> {
+export interface IRepositoryClient<T> {
     get: (options: any) => Promise<T[]>;
     getById: (id: string) => Promise<T | null>;
     create: (item: T) => Promise<boolean>;

@@ -1,14 +1,14 @@
 import { FilterQuery, Schema } from 'mongoose';
 import shortid from 'shortid';
 
-import { IDatabaseClient } from "../../../interfaces/databaseClient";
+import { IRepositoryClient } from "../../../interfaces/repositoryClient";
 import mongooseClient from './mongodb';
 import { ideaSchema } from './schemas/ideaSchema';
 
-export class MongoDBClient<T> implements IDatabaseClient<T> {
+export class MongoDBClient<T> implements IRepositoryClient<T> {
     private Model;
     constructor() {
-        this.Model = mongooseClient.getClient().model<T>("Idea", ideaSchema);
+        this.Model = mongooseClient.getClient().model<T>("Idea", ideaSchema); // @TODO: Fix hardcoded values // make truly generic
     }
     get = (options: any): Promise<T[]> => {
         const page = options.page || 0;
