@@ -1,6 +1,6 @@
 import express from 'express';
 import { IIdea } from '../models/idea';
-import ideaService from '../services/idea.service';
+import ideaService from '../services/ideaService';
 
 interface IIdeaController {
     getIdeas: (req: express.Request, res: express.Response, next: express.NextFunction) => void;
@@ -17,7 +17,7 @@ class IdeaController implements IIdeaController {
         const page = req.query.page ? parseInt(req.query.page.toString()) : undefined;
         const limit = req.query.limit ? parseInt(req.query.limit.toString()) : undefined;
 
-        const ideas = await ideaService.get(page, limit);
+        const ideas = await ideaService.get({page, limit});
         res.status(200).send(ideas);
     };
 
@@ -32,7 +32,7 @@ class IdeaController implements IIdeaController {
             title,
             description
         }
-        const result = await ideaService.add(newIdea);
+        const result = await ideaService.create(newIdea);
         res.status(200).send(result);
     };
 
@@ -45,13 +45,13 @@ class IdeaController implements IIdeaController {
 
     public deleteIdea = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         const id = req.params.id;
-        const result = await ideaService.deleteById(id);
+        const result = await ideaService.delete(id);
         res.status(200).send(result);
     };
 
     public searchIdea = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        const query = req.query;
-        const result = await ideaService.search(query);
+        const { searchTerm } = req.query;
+        const result = await ideaService.search({searchTerm: searchTerm as string});
         res.status(200).send(result);
     };
 }

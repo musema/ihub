@@ -10,7 +10,7 @@ import expressWinston from 'express-winston';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-import ideaRouter from './routes/idea';
+import ideaRouter from './routes/ideaRouter';
 import loggerOptions from './utils/loggerOptions';
 import swaggerOptions from './utils/swaggerOptions';
 

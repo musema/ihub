@@ -1,14 +1,13 @@
 import { FilterQuery, Schema } from 'mongoose';
 import shortid from 'shortid';
 
-import { IRepositoryClient } from "../../../interfaces/repositoryClient";
+import { IRepository } from "../../../interfaces";
 import mongooseClient from './mongodb';
-import { ideaSchema } from './schemas/ideaSchema';
 
-export class MongoDBClient<T> implements IRepositoryClient<T> {
+export abstract class MongodbClient<T> implements IRepository<T> {
     private Model;
-    constructor() {
-        this.Model = mongooseClient.getClient().model<T>("Idea", ideaSchema); // @TODO: Fix hardcoded values // make truly generic
+    constructor(modelName: string, schema: Schema) {
+        this.Model = mongooseClient.getClient().model<T>(modelName, schema);
     }
     get = (options: any): Promise<T[]> => {
         const page = options.page || 0;

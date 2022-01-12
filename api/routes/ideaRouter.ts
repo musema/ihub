@@ -1,4 +1,4 @@
-import IdeaController from '../controllers/idea';
+import IdeaController from '../controllers/ideaController';
 import express from 'express';
 
 const ideaRouter = express.Router();

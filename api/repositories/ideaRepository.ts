@@ -1,10 +1,10 @@
-import { MongoDBClient } from '../clients/database/mongodb/mongodbClient';
+import mongodbIdeaClient from '../clients/database/mongodb/mongodbIdeaClient';
 import { IIdea } from '../models/idea';
 import { AbstractRepository } from './abstractRepository';
 
 export class IdeaRepository extends AbstractRepository<IIdea> {
-    constructor(){
-        super(new MongoDBClient()); // @TODO: this tight coupling needs to be fixed
+    constructor(){ 
+        super(mongodbIdeaClient); // @TODO: this injection could further be improved with IoC
     }
 }
 

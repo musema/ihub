@@ -1,10 +1,8 @@
-import { IRepositoryClient } from '../interfaces/repositoryClient';
-import { IRepository } from './interfaces/repository';
-
+import { IRepository } from '../interfaces';
 
 export abstract class AbstractRepository<T> implements IRepository<T> {
 
-  constructor(private repositoryClient: IRepositoryClient<T>) {}
+  constructor(private repositoryClient: IRepository<T>) {}
 
   get(options: any): Promise<T[]> {
     return this.repositoryClient.get(options);
