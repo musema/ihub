@@ -1,11 +1,11 @@
 import express from 'express';
-import IdeaRepository from '../repositories/idea.repository';
+import IdeaRepository from '../repositories/ideaRepository';
 import { IIdea } from '../models/idea';
 
 class IdeaService {
 
     async get(page: number=0, limit: number = 10) {
-        return await IdeaRepository.get(page, limit);
+        return await IdeaRepository.get({page, limit});
     }
 
     async getById(id: string) {
@@ -13,7 +13,7 @@ class IdeaService {
     }
 
     async add(idea: IIdea) {
-        return await IdeaRepository.add(idea);
+        return await IdeaRepository.create(idea);
     }
 
     async update(id: string, updatedIdea: IIdea) {
@@ -21,11 +21,11 @@ class IdeaService {
     }
 
     async deleteById(id: string) {
-        return await IdeaRepository.deleteById(id);
+        return await IdeaRepository.delete(id);
     }
 
     async search(query: any) {
-        return await IdeaRepository.search(query);
+        // return await IdeaRepository.search(query);
     }
 
 }

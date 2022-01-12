@@ -3,11 +3,12 @@ import shortid from 'shortid';
 
 import { IDatabaseClient } from "../../../interfaces/databaseClient";
 import mongooseClient from './mongodb';
+import { ideaSchema } from './schemas/ideaSchema';
 
 export class MongoDBClient<T> implements IDatabaseClient<T> {
     private Model;
     constructor() {
-        this.Model = mongooseClient.getClient().model<T>("")
+        this.Model = mongooseClient.getClient().model<T>("Idea", ideaSchema);
     }
     get = (options: any): Promise<T[]> => {
         const page = options.page || 0;
