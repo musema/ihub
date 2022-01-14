@@ -1,4 +1,12 @@
-## Start the API [../api/README.md](../api/README.md) first
+# ihub SPA
+
+## Start the API [api](../api/README.md) first
+
+    1. Add .env file to `./web` directory, and add the following key value pairs
+    ```
+   REACT_APP_API_BASE_URI=base uri of your api e.g <http://localhost:5000>, you will need to provide actual api url in PROD
+
+    ```
 
 ## Available Scripts
 
@@ -26,4 +34,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-

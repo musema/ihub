@@ -2,10 +2,10 @@ import axios from 'axios';
 import { IComment } from '../models/comment';
 import { IIdea } from '../models/idea';
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URI });
 
 API.interceptors.request.use((req) => {
-  req.headers.Authorization = 'Bearer xxxx'
+  req.headers.Authorization = 'Bearer '+ localStorage.getItem('authToken');
   return req;
 });
 
@@ -18,7 +18,7 @@ interface IIdeaApiResponse {
 }
 export const fetchIdeas = async (): Promise<IIdea[]> => {
   const { data } = await API.get<IIdeaApiResponse[]>(`/ideas`);
-  return data.map((d: IIdeaApiResponse) => {
+  return data?.map((d: IIdeaApiResponse) => {
     return {
         id: d._id,
         title: d.title,
