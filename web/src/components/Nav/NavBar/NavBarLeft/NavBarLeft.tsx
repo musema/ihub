@@ -9,10 +9,9 @@ import { useStyles } from './NavBarLeft.styles';
 export const NavBarLeft = () => {
     const classes = useStyles();
 
-    return <>
-    <Paper className={classes.container}>
+    return(
         <Paper component="form" className={classes.container} >
-        <IconButton sx={{ p: '10px' }} aria-label="menu">
+          <IconButton sx={{ p: '10px' }} aria-label="menu">
             <MenuIcon />
           </IconButton>
           <InputBase
@@ -24,6 +23,5 @@ export const NavBarLeft = () => {
             <SearchIcon />
           </IconButton>
         </Paper>
-        </Paper>
-        </>
+    );
 };

@@ -1,23 +1,21 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import { NavBarLeft } from './NavBarLeft/NavBarLeft';
 import { NavBarRight } from './NavBarRight/NavBarRight';
 import { useStyles } from './NavBar.styles';
-import { Paper } from '@material-ui/core';
+import { AppBar, Box, Toolbar } from '@material-ui/core';
 
-export const NavBar = () => {
-  const classes = useStyles();
+interface INavBarProps {
+  marginLeft: number;
+}
+export const NavBar = ({ marginLeft }: INavBarProps) => {
+  const classes = useStyles({marginLeft});
   return (
-    // <AppBar className={classes.appBar}  position="static">
-      <Paper className={classes.appBar}>
+    <AppBar className={classes.appBar}  position="fixed" color='primary'>
         <Toolbar>
             <NavBarLeft />
             <Box sx={{ flexGrow: 1 }} />
             <NavBarRight />
         </Toolbar>
-        </Paper>
-      // </AppBar>
+    </AppBar>
   );
 }

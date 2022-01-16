@@ -1,9 +1,14 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles((theme) => ({
+interface INavBarStyleProps {
+  marginLeft: number;
+}
+export const useStyles = makeStyles<Theme, INavBarStyleProps>((theme) => ({
   appBar: {
-    margin: 8,
+    color: theme.palette.primary.main,
+    marginLeft: ({marginLeft}) => marginLeft,
+    width: ({marginLeft}) => `calc(100% - ${marginLeft}px)`,
+    maxWidth: ({marginLeft}) => `calc(100% - ${marginLeft}px)`,
     flexGrow: 1,
-    borderRadius: 8
   }
 }));
