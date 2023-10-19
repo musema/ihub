@@ -14,19 +14,20 @@ Assuming MongoDB server is running on `PORT` 5000, and database named `ideadb` i
 
 ### Secure the API with JWT
 
- --- COMING SOON ---
+--- COMING SOON ---
 
 ### Setup instruction
 
     1. Add .env file to `./api` directory, and add the following key value pairs
     ```
-   MONGODB_CONNECTION_STRING= connection string of mongodb database
-   GOOGLE_CLIENT_ID_IHUB_WEB= [your google client id].apps.googleusercontent.com
+
+MONGODB_CONNECTION_STRING= connection string of mongodb database
+GOOGLE_CLIENT_ID_IHUB_WEB= [your google client id].apps.googleusercontent.com
 
     ```
 
 1. install `nodemon` globally
-    `npm install -g nodemon`
+   `npm install -g nodemon`
 
 ### Scripts
 
@@ -34,3 +35,44 @@ Assuming MongoDB server is running on `PORT` 5000, and database named `ideadb` i
 
 1. MongoDB is up and running on PORT `5000`
    1. `cd api && npm start`
+
+## Docker container
+
+### Building image
+
+```
+// cd into this directory
+docker build -t ihub-api .
+```
+
+### Run image
+
+```code
+docker run -d -p 5001:5005  ihub-api
+```
+
+### Debug
+
+```
+
+docker exec -it my-container-id /bin/sh
+
+// logs
+docker logs my-container-id
+
+
+```
+
+### Remove a container
+
+```
+docker remove -f c7bbfa29cb9f
+```
+
+Some more commands to check
+
+```
+docker scout quickview
+docker scout cves local://ihub-api:latest // use image and version name
+
+```
