@@ -16,7 +16,7 @@ import swaggerOptions from "./utils/swaggerOptions";
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port = process.env.PORT ?? 5001;
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(cors());

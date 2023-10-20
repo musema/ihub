@@ -13,10 +13,11 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
+RUN npm run build
+
 # Expose the port your application will run on
 EXPOSE 5005
 
-ENV MONGODB_CONNECTION_STRING mongodb://localhost:27017/ideadb
 ENV PORT 5005
 # Define the command to run your application
 CMD ["node", "dist/app.js"]

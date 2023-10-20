@@ -1,0 +1,31 @@
+version: "3"
+services:
+  ihub-api:
+    build: ./api
+    #image: # provide image if it's already built and published to a registry
+    ports:
+      - 5005:5005
+    environment:
+      - NODE_ENV=development
+      - PORT=5005 # this is where express app will be listening on server/container
+      - MONGODB_URI=mongodb://mongo_db:27017
+      - DB_NAME=ideadb
+      - DB_USER=dbuser1
+      - DB_PASSWORD=dbpassword1
+    volumes:
+      - ./api:/app # move this to docker-compose.dev.yml
+      - /app/node_modules
+    depends_on:
+      - mongo_db
+  mongo_db:
+    container_name: mongodb_container
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=dbuser1
+      - MONGO_INITDB_ROOT_PASSWORD=dbpassword1
+    volumes:
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db: {}

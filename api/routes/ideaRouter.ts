@@ -1,6 +1,6 @@
-import IdeaController from '../controllers/ideaController';
-import express from 'express';
-import { authenticate } from '../middlewares/auth/authenticate';
+import IdeaController from "../controllers/ideaController";
+import express from "express";
+import { getAuthenticator } from "../middlewares/auth/getAuthenticator";
 
 const ideaRouter = express.Router();
 
@@ -48,7 +48,7 @@ const ideaRouter = express.Router();
  *               items:
  *                 $ref: '#/components/schemas/Idea'
  */
-ideaRouter.get('/', authenticate, IdeaController.getIdeas);
+ideaRouter.get("/", getAuthenticator(), IdeaController.getIdeas);
 
 /**
  * @swagger
@@ -73,8 +73,7 @@ ideaRouter.get('/', authenticate, IdeaController.getIdeas);
  *       400:
  *         description:  No Idea was found with a given id
  */
-ideaRouter.get('/:id', authenticate, IdeaController.getIdeaById);
-
+ideaRouter.get("/:id", getAuthenticator(), IdeaController.getIdeaById);
 
 /**
  * @swagger
@@ -98,7 +97,7 @@ ideaRouter.get('/:id', authenticate, IdeaController.getIdeaById);
  *       500:
  *         description: Something went wrong
  */
-ideaRouter.post('/', authenticate, IdeaController.addIdea);
+ideaRouter.post("/", getAuthenticator(), IdeaController.addIdea);
 
 /**
  * @swagger
@@ -129,9 +128,9 @@ ideaRouter.post('/', authenticate, IdeaController.addIdea);
  *       500:
  *         description: Something went wrong
  */
- ideaRouter.put('/:id', authenticate, IdeaController.updateIdea);
+ideaRouter.put("/:id", getAuthenticator(), IdeaController.updateIdea);
 
- /**
+/**
  * @swagger
  * /ideas/{id}:
  *   delete:
@@ -154,6 +153,6 @@ ideaRouter.post('/', authenticate, IdeaController.addIdea);
  *       500:
  *         description: Something went wrong
  */
-ideaRouter.delete('/:id', authenticate, IdeaController.deleteIdea);
+ideaRouter.delete("/:id", getAuthenticator(), IdeaController.deleteIdea);
 
-export default ideaRouter
+export default ideaRouter;

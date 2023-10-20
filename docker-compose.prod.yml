@@ -1,0 +1,26 @@
+version: "3"
+services:
+  ihub-api:
+    deploy: # docker Swarm configuration
+      replicas: 6
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 60s
+    build:
+      context: ./api
+      args:
+        NODE_ENV: production
+
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo_db:27017
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+    command: node index.js
+  mongo_db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
