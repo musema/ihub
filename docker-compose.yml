@@ -15,6 +15,7 @@ services:
     volumes:
       - ./api:/app # move this to docker-compose.dev.yml
       - /app/node_modules
+    command: npm run dev
     depends_on:
       - mongo_db
   mongo_db:

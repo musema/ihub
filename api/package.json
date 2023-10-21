@@ -5,10 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "tsc && node --unhandled-rejections=strict ./dist/app.js",
+    "dev": "nodemon app.ts",
     "build": "tsc",
-    "dev:start": "nodemon app.ts",
-    "debug": "export DEBUG=* && npm run start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "export DEBUG=* && npm run start"
   },
   "keywords": [
     "API",

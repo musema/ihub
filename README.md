@@ -27,4 +27,7 @@ docker compose up --build
 ```
 docker remove 02136a267daa # remove a container
 docker rmi image_name
+
+// sync local working directory with container working directory
+docker run -v $(pwd):/container-workdir -p host-port:container-port --name container-name  image-name
 ```
