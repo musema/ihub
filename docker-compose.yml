@@ -1,5 +1,16 @@
 version: "3"
 services:
+  ihub-web:
+    build: ./web
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_BASE_URI=http://localhost:5005/
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+    command: npm run start
   ihub-api:
     build: ./api
     #image: # provide image if it's already built and published to a registry
