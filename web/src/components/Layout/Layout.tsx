@@ -1,36 +1,41 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core'
-import { NavBar } from '../Nav/NavBar'
-import { LeftDrawer } from '../Drawer/LeftDrawer'
+import { makeStyles } from "@material-ui/core";
+import { NavBar } from "../Nav/NavBar";
+import { LeftDrawer } from "../Drawer/LeftDrawer";
 
-const drawerWidth = 200;
+const drawerWidth = 0;
 
 const useStyles = makeStyles((theme) => {
   return {
     root: {
-        display: 'flex',
-      },
+      display: "grid",
+    },
+    title: {
+      padding: theme.spacing(2),
+    },
     mainContent: {
-      width: '100%',
+      display: "grid",
+      gridTemplateColumns: "200px auto",
+      marginTop: "50px",
+      width: "100%",
       padding: theme.spacing(3),
     },
-    toolbar: theme.mixins.toolbar
-  }
-})
+    toolbar: theme.mixins.toolbar,
+  };
+});
 
 export function Layout({ children }: any) {
   const classes = useStyles();
 
   return (
-    <div>
-      <NavBar marginLeft={drawerWidth}/>
-      <LeftDrawer width={drawerWidth}/>
+    <div className={classes.root}>
+      <NavBar marginLeft={drawerWidth} />
       <div className={classes.mainContent}>
-        <div className={classes.toolbar}></div>
-        { children }
+        <LeftDrawer width={drawerWidth} />
+        {/* <div className={classes.toolbar}></div> */}
+        {children}
       </div>
     </div>
-  )
+  );
 }
 
 export default Layout;
