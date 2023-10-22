@@ -1,17 +1,24 @@
 version: "3"
 services:
   ihub-web:
-    build: ./web
+    container_name: ihub-web_container
+    build:
+      context: ./web
+      # dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_BASE_URI=http://localhost:5005/
     ports:
-      - 3000:3000
+      - 3000:80
     environment:
       - NODE_ENV=development
-      - REACT_APP_API_BASE_URI=http://localhost:5005/
+      - REACT_APP_API_BASE_URI=http://localhost:5005/ # this is passed to the container built at final stage, the build stage has no access to it
     volumes:
       - ./web:/app
       - /app/node_modules
-    command: npm run start
+    depends_on:
+      - ihub-api
   ihub-api:
+    container_name: ihub-api_container
     build: ./api
     #image: # provide image if it's already built and published to a registry
     ports:
