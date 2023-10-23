@@ -1,11 +1,11 @@
-# ihub SPA
+# ihub Web Application - Frontend
 
 ## Start the API [api](../api/README.md) first
 
     1. Add .env file to `./web` directory, and add the following key value pairs
-    
+
     ```
-    REACT_APP_API_BASE_URI=base uri of your api e.g <http://localhost:5000>, you will need to provide actual api url in PROD
+    IHUB_API_BASE_URI=base uri of your api e.g <http://localhost:5005>, you will need to provide actual api url in PROD
 
     ```
 
