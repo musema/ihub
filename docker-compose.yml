@@ -1,17 +1,17 @@
 version: "3"
 services:
-  ihub-web:
+  ihub-ui:
     container_name: ihub-ui_container
     image: gabardata/ihub-ui:latest
     build:
       context: ./ui
       args:
-        - IHUB_API_BASE_URI=http://localhost:5005/
+        - IHUB_API_BASE_URI=http://localhost:5005
     ports:
       - 3000:80
     environment:
       - NODE_ENV=development
-      - IHUB_API_BASE_URI=http://localhost:5005/ # this is passed to the container built at final stage, the build stage has no access to it
+      - IHUB_API_BASE_URI=http://localhost:5005 # this is passed to the container built at final stage, the build stage has no access to it
     volumes:
       - ./ui:/app
       - /app/node_modules

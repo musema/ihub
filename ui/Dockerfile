@@ -9,8 +9,8 @@ RUN npm install --force
 
 COPY . .
 
-ARG REACT_APP_API_BASE_URI
-ENV REACT_APP_API_BASE_URI=$REACT_APP_API_BASE_URI
+ARG IHUB_API_BASE_URI
+ENV IHUB_API_BASE_URI=$IHUB_API_BASE_URI
 RUN npm run build
 
 # Stage 2: Serve the production build with a lightweight web server

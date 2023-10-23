@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -25,7 +24,11 @@ module.exports = {
     new webpack.ProvidePlugin({
       process: "process/browser",
     }),
-    new Dotenv(),
+    new webpack.DefinePlugin({
+      "process.env.IHUB_API_BASE_URI": JSON.stringify(
+        process.env.IHUB_API_BASE_URI
+      ),
+    }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
