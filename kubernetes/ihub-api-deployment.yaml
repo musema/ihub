@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ihub-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ihub-api
+  template:
+    metadata:
+      labels:
+        app: ihub-api
+    spec:
+      containers:
+        - name: ihub-api-container
+          image: gabardata/ihub-api:latest
+          ports:
+            - containerPort: 5005
+          env:
+            - name: NODE_ENV
+              value: development
+            - name: PORT
+              value: "5005"
+            - name: MONGODB_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: ihub-config
+                  key: mongodb-url
+            - name: DB_NAME
+              value: ideadb
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ihub-api-service
+spec:
+  selector:
+    app: ihub-api
+  ports:
+    - protocol: TCP
+      port: 5005
+      targetPort: 5005

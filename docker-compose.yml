@@ -2,9 +2,9 @@ version: "3"
 services:
   ihub-web:
     container_name: ihub-web_container
+    image: gabardata/ihub-web:latest
     build:
       context: ./web
-      # dockerfile: Dockerfile
       args:
         - REACT_APP_API_BASE_URI=http://localhost:5005/
     ports:
@@ -19,8 +19,8 @@ services:
       - ihub-api
   ihub-api:
     container_name: ihub-api_container
+    image: gabardata/ihub-api:latest
     build: ./api
-    #image: # provide image if it's already built and published to a registry
     ports:
       - 5005:5005
     environment:

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ihub-config
+data:
+  ihub-api-url: "http://ihub-api:5005/"
+  mongodb-url: "mongodb://mongodb:27017"
