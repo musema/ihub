@@ -10,7 +10,7 @@
 ### The two major components
 
 1. [API](/api/README.md) RESTful API built with `Node.js`, `Express`, `MongoDB`, and `TypeScript`.
-2. [Web App](/web/README.md) Single Page Application built with `React.js`, `Redux` and `TypeScript`.
+2. [Web App](/ui/README.md) Single Page Application built with `React.js`, `Redux` and `TypeScript`.
 
 ### Setup instruction
 

@@ -1,19 +1,19 @@
 version: "3"
 services:
   ihub-web:
-    container_name: ihub-web_container
-    image: gabardata/ihub-web:latest
+    container_name: ihub-ui_container
+    image: gabardata/ihub-ui:latest
     build:
-      context: ./web
+      context: ./ui
       args:
-        - REACT_APP_API_BASE_URI=http://localhost:5005/
+        - IHUB_API_BASE_URI=http://localhost:5005/
     ports:
       - 3000:80
     environment:
       - NODE_ENV=development
-      - REACT_APP_API_BASE_URI=http://localhost:5005/ # this is passed to the container built at final stage, the build stage has no access to it
+      - IHUB_API_BASE_URI=http://localhost:5005/ # this is passed to the container built at final stage, the build stage has no access to it
     volumes:
-      - ./web:/app
+      - ./ui:/app
       - /app/node_modules
     depends_on:
       - ihub-api
