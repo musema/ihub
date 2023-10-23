@@ -40,14 +40,14 @@ GOOGLE_CLIENT_ID_IHUB_WEB= [your google client id].apps.googleusercontent.com
 
 ### Building image
 
-```
+```js
 // cd into this directory
 docker build -t ihub-api .
 ```
 
 ### Run image
 
-```code
+```js
 docker run -d -p 5001:5005  ihub-api
 ```
 
@@ -66,7 +66,7 @@ docker logs my-container-id
 ### Remove a container
 
 ```
-docker remove -f c7bbfa29cb9f
+docker remove -f container_id
 ```
 
 Some more commands to check
