@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsc && node --unhandled-rejections=strict ./dist/app.js",
     "dev": "nodemon app.ts",
-    "build": "tsc",
+    "build": "rimraf ./dist && tsc",
     "debug": "export DEBUG=* && npm run start"
   },
   "keywords": [
@@ -45,6 +45,7 @@
     "source-map-support": "^0.5.20",
     "ts-node": "^10.4.0",
     "tslint": "^6.1.3",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "rimraf": "^5.0.5"
   }
 }
