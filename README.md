@@ -36,6 +36,10 @@ docker rmi image_name -f // remove an image
 
 // sync local working directory with container working directory
 docker run -v $(pwd):/container-workdir -p host-port:container-port --name container-name  image-name
+
+// Check image vulnerabilities
+docker scout quickview
+docker scout cves image_name:version
 ```
 
 ## Deploying Kubernetes

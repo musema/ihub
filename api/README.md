@@ -1,9 +1,5 @@
 # iHub API
 
----IN_PROGRESS---
-Assuming MongoDB server is running on `PORT` 5000, and database named `ideadb` is created.
---- MORE details will be added --- on how to?
-
 ## Supported API endpoints
 
 1. `GET` `/ideas` - Returns all ideas in `ideas` collection.
@@ -12,67 +8,19 @@ Assuming MongoDB server is running on `PORT` 5000, and database named `ideadb` i
 4. `PUT` `/ideas/{id}` - Updates the details of a given idea.
 5. `DELETE` `/ideas/{id}` - Deletes an idea with a given id.
 
-### Secure the API with JWT
+## Setup instruction
 
---- COMING SOON ---
+## Running with docker compose
 
-### Setup instruction
+No additional setup should be needed if you are running the app with docker compose setup [here](/docker-compose.yml)
 
-    1. Add .env file to `./api` directory, and add the following key value pairs
-    ```
+## Running the API without docker
 
-MONGODB_CONNECTION_STRING= connection string of mongodb database
-GOOGLE_CLIENT_ID_IHUB_WEB= [your google client id].apps.googleusercontent.com
+Make sure required `ENVIRONMENT VARIABLES` are provided
 
-    ```
-
-1. install `nodemon` globally
-   `npm install -g nodemon`
-
-### Scripts
-
-#### Starting the server/API
-
-1. MongoDB is up and running on PORT `5000`
-   1. `cd api && npm start`
-
-## Docker container
-
-### Building image
+1. Add .env file to `./api` directory, and add the following key value pairs
 
 ```js
-// cd into this directory
-docker build -t ihub-api .
-```
-
-### Run image
-
-```js
-docker run -d -p 5001:5005  ihub-api
-```
-
-### Debug
-
-```
-
-docker exec -it my-container-id /bin/sh
-
-// logs
-docker logs my-container-id
-
-
-```
-
-### Remove a container
-
-```
-docker remove -f container_id
-```
-
-Some more commands to check
-
-```
-docker scout quickview
-docker scout cves local://ihub-api:latest // use image and version name
-
+MONGODB_CONNECTION_STRING=connection string of mongodb database
+GOOGLE_CLIENT_ID_IHUB_WEB=[your google client id].apps.googleusercontent.com
 ```

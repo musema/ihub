@@ -15,8 +15,8 @@ minikube start
 kubectl apply -f ihub-config.yaml
 kubectl apply -f mongodb-secret.yaml
 kubectl apply -f mongodb-statefulset.yaml
-kubectl apply -f ihub-ui-deployment.yaml
 kubectl apply -f ihub-api-deployment.yaml
+kubectl apply -f ihub-ui-deployment.yaml
 ```
 
 ### Some useful `kubectl` commands
@@ -30,4 +30,12 @@ kubectl delete -f <resource-file.yaml> // delete resource
 
 ```js
 minikube service ihub-ui-service # this will open the service on browser
+```
+
+## Applying all resources together
+
+You can execute `./apply_resources.sh` script to apply all resources in dependency order. Execute the following command make it executable.
+
+```js
+chmod +x apply_resources.sh
 ```
